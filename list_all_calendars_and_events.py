@@ -42,8 +42,6 @@ service=get_service()
 calender_list_obj=get_calendar_list_obj(service)
 for cal in get_calendar_list_items(calender_list_obj):
     print(get_name(cal), get_id(cal)) #works
-    # elo=get_event_list_obj(service,cal)
-    # for e in get_event_list_items(elo):
-    #     print('\t',get_name(e))
+    
 
 
