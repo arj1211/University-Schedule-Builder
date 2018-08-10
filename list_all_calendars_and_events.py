@@ -36,12 +36,14 @@ def get_name(obj):
 def get_id(obj):
     return obj['id']
 
-# calenderlist['items'][n]['summary'] is nth calender's name
+def event_not_cancelled(event):
+    return event['status']!='cancelled'
 
 service=get_service()
-calender_list_obj=get_calendar_list_obj(service)
-for cal in get_calendar_list_items(calender_list_obj):
-    print(get_name(cal), get_id(cal)) #works
-    
-
-
+calendar_list_obj=get_calendar_list_obj(service)
+for cal in get_calendar_list_items(calendar_list_obj):
+    print(get_name(cal), get_id(cal))
+    el = get_event_list_items(get_event_list_obj(service, cal))
+    for e in el:
+        if event_not_cancelled(e):
+            print('\t',get_name(e), get_id(e)) #works
