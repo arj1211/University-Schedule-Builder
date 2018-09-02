@@ -7,7 +7,7 @@ from oauth2client import tools
 import datetime
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
+SCOPES = 'https://www.googleapis.com/auth/calendar'
 
 def get_service():
     store = oauth_file.Storage('token.json')
@@ -90,6 +90,19 @@ def get_event_time(event):
             'endDate':end_date
         }
 
+def create_event(summary, description, start, end):
+    event = {
+        'summary': summary,
+        'description': description,
+        'start': start,
+        'end': end
+    }
+    return event
+
+def publish_event(calendar_id, event, service=get_service()):
+    event = service.events().insert(calendarId=calendar_id, body=event).execute()
+    # print 'Event created: %s' % (event.get('htmlLink'))
+    return event.get('htmlLink')
 
 for cal in get_calendar_list_items():
     print(get_name(cal), get_id(cal))
@@ -99,3 +112,5 @@ for cal in get_calendar_list_items():
             print('\t',get_name(e), get_id(e))
             print('\t\t',get_event_time(e)['startDate'],get_event_time(e)['endDate'])
             if event_not_all_day(e): print('\t\t',get_event_time(e)['startTime']['time'],get_event_time(e)['endTime']['time'])
+
+print(publish_event('primary',create_event('test event 1', 'this is a test event for primary calendar', {'dateTime':'2018-09-02T15:00:00-04:00'},{'dateTime':'2018-09-02T16:00:00-04:00'})))
