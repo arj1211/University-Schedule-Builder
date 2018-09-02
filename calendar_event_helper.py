@@ -62,7 +62,20 @@ def get_event_time(event):
         end_date=end_datetime[0].split('-')
         end_time=end_datetime[1].split('-')
         
-        return {'startDate':start_date,'startTime':start_time,'endDate':end_date,'endTime':end_time}
+        return {
+            'startDate':start_date,
+            'startTime':
+            {
+                'time':start_time[0],
+                'timeZone':start_time[1]
+            },
+            'endDate':end_date,
+            'endTime':
+            {
+                'time':end_time[0],
+                'timeZone':end_time[1]
+            }
+        }
 
     else:
         ''' event = { ... 
@@ -72,7 +85,10 @@ def get_event_time(event):
         '''
         start_date=event['start']['date'].split('-')
         end_date=event['end']['date'].split('-')
-        return {'startDate':start_date,'endDate':end_date}
+        return {
+            'startDate':start_date,
+            'endDate':end_date
+        }
 
 
 for cal in get_calendar_list_items():
@@ -82,4 +98,4 @@ for cal in get_calendar_list_items():
         if event_not_cancelled(e):# and event_not_all_day(e):
             print('\t',get_name(e), get_id(e))
             print('\t\t',get_event_time(e)['startDate'],get_event_time(e)['endDate'])
-            if event_not_all_day(e): print('\t\t',get_event_time(e)['startTime'][0],get_event_time(e)['endTime'][0])
+            if event_not_all_day(e): print('\t\t',get_event_time(e)['startTime']['time'],get_event_time(e)['endTime']['time'])
