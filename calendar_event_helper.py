@@ -113,4 +113,4 @@ for cal in get_calendar_list_items():
             print('\t\t',get_event_time(e)['startDate'],get_event_time(e)['endDate'])
             if event_not_all_day(e): print('\t\t',get_event_time(e)['startTime']['time'],get_event_time(e)['endTime']['time'])
 
-print(publish_event('primary',create_event('test event 1', 'this is a test event for primary calendar', {'dateTime':'2018-09-02T15:00:00-04:00'},{'dateTime':'2018-09-02T16:00:00-04:00'})))
+# print(publish_event('primary',create_event('test event 1', 'this is a test event for primary calendar', {'dateTime':'2018-09-02T15:00:00-04:00'},{'dateTime':'2018-09-02T16:00:00-04:00'})))
