@@ -18,6 +18,15 @@ Rules for scheduling:
 
 Finding free time mechanic:
 
-    1. need start date and end date; start 'counting' 12am on start date, and stop on 12am of end date
+    // 1. need start date and end date; start 'counting' 12am on start date, and stop on 12am of end date
 
-    2. starting at earliest_start_time (7am), count by 15min increments through the whole day till ...
+    // 2. starting at earliest_start_time (7am), count by 15min increments through the whole day till ...
+
+    1. find all events from all of selected calendars c1, c2, ...
+
+    2. only concerned with events with dateTime (not full day events)
+
+    3. for date 'n' (with year month and day values), find all events with 
+    matching date in their startDate fields
+
+    
