@@ -5,6 +5,7 @@ from oauth2client import client
 from oauth2client import file as oauth_file
 from oauth2client import tools
 import datetime
+import googleapiclient
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar'
@@ -100,9 +101,12 @@ def create_event(summary, description, start, end):
     return event
 
 def publish_event(calendar_id, event, service=get_service()):
-    event = service.events().insert(calendarId=calendar_id, body=event).execute()
-    # print 'Event created: %s' % (event.get('htmlLink'))
-    return event.get('htmlLink')
+    try: 
+        event = service.events().insert(calendarId=calendar_id, body=event).execute()
+        # print 'Event created: %s' % (event.get('htmlLink'))
+        return event.get('htmlLink')
+    except googleapiclient.errors.HttpError:
+        return -1
 
 for cal in get_calendar_list_items():
     print(get_name(cal), get_id(cal))
@@ -113,4 +117,4 @@ for cal in get_calendar_list_items():
             print('\t\t',get_event_time(e)['startDate'],get_event_time(e)['endDate'])
             if event_not_all_day(e): print('\t\t',get_event_time(e)['startTime']['time'],get_event_time(e)['endTime']['time'])
 
-# print(publish_event('primary',create_event('test event 1', 'this is a test event for primary calendar', {'dateTime':'2018-09-02T15:00:00-04:00'},{'dateTime':'2018-09-02T16:00:00-04:00'})))
+print(publish_event('en-gb.canadian#holiday@group.v.calendar.google.com',create_event('test event 1', 'this is a test event for primary calendar', {'dateTime':'2018-09-04T15:00:00-04:00'},{'dateTime':'2018-09-04T16:00:00-04:00'})))
