@@ -1,9 +1,9 @@
 import React from 'react';
 import {creds} from './creds.js';
 
-const CLIENT_ID = creds.CLIENT_ID;//"86631102357-gif3u8kvj06lst3i8i679oihri12iri1.apps.googleusercontent.com";
-const API_KEY = creds.API_KEY;//"AIzaSyAgmo1HZO38QwYMD8QCWyzHAzla1HFtztE";
-const cal_id = creds.cal_id;//'0orhuds7jlbbclu45rn35ahpdo@group.calendar.google.com';
+const CLIENT_ID = creds.CLIENT_ID;
+const API_KEY = creds.API_KEY;
+const cal_id = creds.cal_id;
 const gapi = window.gapi;
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
