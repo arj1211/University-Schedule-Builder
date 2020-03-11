@@ -1,3 +1,30 @@
+## Auth
+- Create `creds.js` in `src` folder
+- `creds.js` :
+  ```javascript
+    var creds = {
+        CLIENT_ID : "<Your Client ID here>",
+        API_KEY : "<Your API Key here>",
+        cal_id : '<ID of one of your google calendars>'
+        // cal_id = 'primary' if you want to see events for your default calendar
+    };
+    export {creds};
+  ```
+- Can get `CLIENT_ID` and `API_KEY` from [google dev console](console.cloud.google.com)
+  - Create a new project, take note of its **ID**
+  - Go to https://console.cloud.google.com/apis/library?project=Your_project's_ID_here
+    - Search for ***Google Calendar API*** and enable it for your project
+  - Go to https://console.cloud.google.com/apis/credentials?project=Your_project's_ID_here
+  - Create credentials
+    1. API key
+       - copy the key, put it in the `creds.js` file
+    2. OAuth client ID
+       1. Application type: Web
+       2. Authorised JavaScript origins: [http://localhost:3000](http://localhost:3000)
+       3. Authorised redirect URIs: [http://localhost:3000](http://localhost:3000)
+       4. Create
+       5. copy the **client_id**, put it in the `creds.js` file
+
 ## Available Scripts
 
 In the project directory, you can run:
