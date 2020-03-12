@@ -13,13 +13,15 @@ class Auth extends React.Component {
         authed: false,
         events: null
     }
-    buttonStyle = {
-        width: '100px',
-        height: '100px',
-        backgroundColor: this.state.authed ? '#4CAF50' : '#45AEA0',
-        color: 'white',
-        fontSize: 'x-large'
-    }
+    buttonStyle = () => {
+        return ({
+            width: '100px',
+            height: '100px',
+            backgroundColor: this.state.authed ? '#4d0000' : '#006600',
+            color: 'white',
+            fontSize: 'x-large'
+        })
+    };
     componentDidMount() {
         gapi.load('client:auth2', () => {
             gapi.client.init({
@@ -41,11 +43,15 @@ class Auth extends React.Component {
         );
     }
 
-    handleAuthIn = () =>
+    handleAuthIn = () => {
         gapi.auth2.getAuthInstance().signIn();
+        this.setState({ authed: true });
+    }
 
-    handleAuthOut = () =>
+    handleAuthOut = () => {
         gapi.auth2.getAuthInstance().signOut();
+        this.setState({ authed: false });
+    }
 
     listUpcomingEvents() {
         gapi.client.calendar.events.list({
@@ -139,7 +145,7 @@ class Auth extends React.Component {
         return (
             <div>
                 <h1>Auth Component</h1>
-                <button style={this.buttonStyle}
+                <button style={this.buttonStyle()}
                     onClick={() => { this.state.authed ? this.handleAuthOut() : this.handleAuthIn() }}>
                     Sign {this.state.authed ? 'Out' : 'In'}
                 </button>
