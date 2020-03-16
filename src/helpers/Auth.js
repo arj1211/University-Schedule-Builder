@@ -1,5 +1,5 @@
 import React from 'react';
-import { creds } from './creds.js';
+import { creds } from '../creds.js';
 
 const CLIENT_ID = creds.CLIENT_ID;
 const API_KEY = creds.API_KEY;
@@ -42,7 +42,7 @@ class Auth extends React.Component {
         }
         );
     }
-
+    
     handleAuthIn = () => {
         gapi.auth2.getAuthInstance().signIn();
         this.setState({ authed: true });
