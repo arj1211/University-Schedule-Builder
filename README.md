@@ -10,7 +10,7 @@
     };
     export {creds};
   ```
-- Can get `CLIENT_ID` and `API_KEY` from [google dev console](console.cloud.google.com)
+- Can get `CLIENT_ID` and `API_KEY` from [google dev console](https://console.cloud.google.com)
   - Create a new project, take note of its **ID**
   - Go to https://console.cloud.google.com/apis/library?project=Your_project's_ID_here
     - Search for ***Google Calendar API*** and enable it for your project
