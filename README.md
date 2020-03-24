@@ -1,3 +1,9 @@
+## Todo
+- [ ] Get `listUpcomingEvents` working
+- [ ] Merge branch to master
+- [ ] Make a CalendarCard component that has name of calendar + 3 immediately upcoming events
+- [ ] Add MaterialUI
+
 ## Auth
 - Create `creds.js` in `src` folder
 - `creds.js` :
