@@ -1,6 +1,6 @@
 ## Todo
 - [x] Get `listUpcomingEvents` working
-- [ ] Merge branch to master
+- [x] Merge branch to master
 - [ ] Make a CalendarCard component that has name of calendar + 3 immediately upcoming events
 - [ ] Add MaterialUI
 
