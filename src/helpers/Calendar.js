@@ -36,24 +36,19 @@ export default class Calendar {
         return window.gapi.auth2.getAuthInstance().isSignedIn.get();
     }
 
-    listUpcomingEvents(cal_id, maxDisplayResults = null) {
-        window.gapi.client.calendar.events.list({
+    async listUpcomingEvents(cal_id, maxDisplayResults = null) {
+        return await window.gapi.client.calendar.events.list({
             'calendarId': cal_id,
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
             'maxResults': maxDisplayResults,
             'orderBy': 'startTime'
-        }).then((response) => {
-            let events = response.result.items;
-            return events;
-        }, (error) => {
-            return error;
-        });
+        }).then(response => response.result.items, err => err.message);
     }
 
     async listCalendars() {
-        return await window.gapi.client.calendar.calendarList.list().then(r => r = r.result.items);
+        return await window.gapi.client.calendar.calendarList.list().then(r => r.result.items, err => err.message);
     }
 
 }
