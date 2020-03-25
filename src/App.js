@@ -8,14 +8,12 @@ class App extends React.Component {
     super();
     this.cal = new Calendar();
     this.state = {
-      // signed: false,
       calList: null
     }
   }
 
   componentDidMount() {
     this.cal.init();
-    // this.setState({signed: this.cal.isSignedIn()})
   }
 
   prettyDate(datevalue) {
@@ -102,7 +100,6 @@ class App extends React.Component {
         .then((r) => {
           item.events = r;
           this.setState({ calList: this.state.calList });
-          console.log(this.state.calList)
         })
     );
   }
@@ -113,12 +110,8 @@ class App extends React.Component {
         <h1>Testing</h1>
         <button onClick={() => this.cal.signMeIn()}>Sign In</button>
         <button onClick={() => console.log(this.cal.isSignedIn())}>Am I signed in?</button>
-        <button
-          // style={{ visibility: this.state.signed ? 'visible' : 'hidden' }} 
-          onClick={() => this.CL()}>List</button>
-        <button
-          style={{ visibility: this.state.calList ? 'visible' : 'hidden' }}
-          onClick={() => this.EL()}>List Events</button>
+        <button onClick={() => this.CL()}>List</button>
+        <button style={{ visibility: this.state.calList ? 'visible' : 'hidden' }} onClick={() => this.EL()}>List Events</button>
         <ol>
           {this.state.calList ?
             this.state.calList.map(c => {

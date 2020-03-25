@@ -13,23 +13,19 @@ const initObj = {
 export default class Calendar {
 
     init() {
-        console.log('got into Calendar.init');
         window.gapi.load('client:auth2', this.startAuth);
     }
 
     startAuth() {
-        console.log('got into Calendar.startAuth');
         window.gapi.client.init(initObj);
     }
 
     signMeIn() {
         window.gapi.auth2.getAuthInstance().signIn();
-        console.log('just signed in?: ' + window.gapi.auth2.getAuthInstance().isSignedIn.get());
     }
 
     signMeOut() {
         window.gapi.auth2.getAuthInstance().signOut();
-        console.log('just signed out?: ' + !window.gapi.auth2.getAuthInstance().isSignedIn.get());
     }
 
     isSignedIn() {
