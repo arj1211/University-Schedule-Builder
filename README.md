@@ -1,8 +1,10 @@
 ## Todo
 - [x] Get `listUpcomingEvents` working
 - [x] Merge branch to master
-- [ ] Make a CalendarCard component that has name of calendar + 3 immediately upcoming events
 - [ ] Add MaterialUI
+- [ ] Make a CalendarCard component that has name of calendar + 3 immediately upcoming events
+- [ ] Make CalendarGrid responsive component that displays CalendarCard all components
+- [ ] See if I can add a gcal preview somewhere to see what the user's gcal looks like (so they dont need to open [gcal](https://calendar.google.com) in a new tab to see changes/edits)
 
 ## Auth
 - Create `creds.js` in `src` folder
